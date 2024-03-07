@@ -3,6 +3,7 @@ import { drawCircle } from "../utils";
 
 export function Cpu(props: { cpuLoad: number }) {
   const canvasEl = useRef<HTMLCanvasElement>(null);
+
   drawCircle(canvasEl.current, props.cpuLoad);
 
   return (

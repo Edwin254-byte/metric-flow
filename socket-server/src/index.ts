@@ -58,7 +58,7 @@ if (cluster.isPrimary) {
   const httpServer = http.createServer();
   const io = new Server(httpServer, {
     cors: {
-      origin: "http://localhost:3001",
+      origin: "*",
       credentials: true,
     },
   });

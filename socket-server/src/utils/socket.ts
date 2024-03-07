@@ -22,7 +22,7 @@ export function mainSocket(io: IO, pid: number) {
     socket.emit("welcome", "Welcome to our cluster driven socket.io server!");
 
     socket.on("perfLoad", data => {
-      console.log("Tick...", pid, data.macA);
+      // console.log("Tick...", pid, data.macA);
       // console.log(data);
       if (!machineMacA) {
         machineMacA = data.macA;
