@@ -22,8 +22,7 @@ FROM node:alpine AS production
 WORKDIR /opt/demo
 
 # provide the environments needed
-ENV PORT=3000
-ENV SOCKET_SERVER_URL=http://socket-server.v3.lcl
+ENV PORT=3300
 ENV NODE_ENV=production
 
 # Copy only the necessary files from the build stage

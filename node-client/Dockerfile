@@ -22,7 +22,7 @@ FROM node:alpine AS production
 WORKDIR /opt/demo
 
 # provide the environments needed
-ENV PORT=3000
+ENV PORT=3200
 ENV SOCKET_SERVER_URL=http://socket-server.v3.lcl
 ENV NODE_ENV=production
 

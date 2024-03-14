@@ -42,7 +42,7 @@ if (cluster.isPrimary) {
     serialization: "advanced",
   });
 
-  httpServer.listen(3000); // Internet facing!
+  httpServer.listen(3100); // Internet facing!
 
   for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
