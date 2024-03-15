@@ -23,7 +23,9 @@ WORKDIR /opt/demo
 
 # provide the environments needed
 ENV PORT=3200
-ENV SOCKET_SERVER_URL=http://socket-server.v3.lcl
+ENV PUB_SOCKET_SERVER_URL=http://socket-server.v3.lcl
+ENV INT_SOCKET_SERVER_URL=http://socket-server:3300
+ENV LCL_SOCKET_SERVER_URL=http:/127.0.0.1:3300
 ENV NODE_ENV=production
 
 # Copy only the necessary files from the build stage

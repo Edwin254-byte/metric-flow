@@ -36,9 +36,9 @@ app.use(<ErrorRequestHandler>function (err, req, res, next) {
 });
 
 //Exposing the server
-const port = process.env.PORT || 3100;
+const port = +`${process.env.SOCKET_CLIENT_PORT}` || 3100;
 const host = "0.0.0.0";
-const extUrl = process.env.EXTERNAL_URL;
+const extUrl = process.env.PUB_SOCKET_CLIENT_URL;
 
 app.listen({ host, port }, () => {
   console.log(`🚀🚀 server ready at: http://${host}:${port}`);

@@ -12,10 +12,14 @@
 import { createAdapter, setupPrimary } from "@socket.io/cluster-adapter"; //makes it so the primary node can emit to everyone
 import { setupMaster, setupWorker } from "@socket.io/sticky"; //makes it so a client can find its way back to the correct worker
 import cluster from "cluster"; //makes it so we can use multiple threads
+import { config } from "dotenv";
 import http from "http"; //if we need Express, we will implement it a different way
 import os from "os";
 import { Server } from "socket.io";
 import { mainSocket } from "./utils";
+
+// Load env
+config();
 
 const numCPUs = os.cpus().length;
 
@@ -42,7 +46,7 @@ if (cluster.isPrimary) {
     serialization: "advanced",
   });
 
-  httpServer.listen(3100); // Internet facing!
+  httpServer.listen(+`${process.env.SOCKET_SERVER_PORT}` || 3300); // Internet facing!
 
   for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
@@ -56,12 +60,7 @@ if (cluster.isPrimary) {
   console.log(`Worker ${process.pid} started`);
 
   const httpServer = http.createServer();
-  const io = new Server(httpServer, {
-    cors: {
-      origin: "*",
-      credentials: true,
-    },
-  });
+  const io = new Server(httpServer, { cors: { origin: "*", credentials: true } });
 
   // use the cluster adapter
   io.adapter(createAdapter()); //change from the default adapter
