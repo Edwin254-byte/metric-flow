@@ -1,5 +1,15 @@
-# just start the container with the name provided
+
 source "./env.sh"; source "./utils.sh"
+
+function build_srv(){
+    name="$1"
+    echo "Creating $name container...."
+
+    # just execute the docker file for the respective service
+    podman build -t $name "../$name"
+
+    #add more steps to tag and finally push
+}
 
 function start_pod(){
     local name="$1"
