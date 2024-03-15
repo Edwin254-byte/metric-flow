@@ -51,7 +51,7 @@ done
 
 # ------------------------------function to copy env. It needs 1 argument i.e. service name
 function copy_env() {
-show_msg "Copying env..."
+show_msg "Generating the .env file"
 
 # Define the source file
 source_file="env.sh"
@@ -74,11 +74,22 @@ fi
 # Define the destination .env file path
 env_file="$destination_folder/.env"
 
-#Copy new contents to it. And remove any blank lines
-cat $source_file > $env_file; sed -i '/^[[:space:]]*$/d' $env_file
+cat $source_file > $tmp_env_file;perform_replace $tmp_env_file; rm -f $env_file; clean $tmp_env_file $env_file;rm -f $tmp_env_file;
 
 show_msg "Contents of $source_file copied to $env_file successfully."
 }
+
+# replace bash enviroment variables in a file
+function perform_replace(){
+    local file="$1"; local data=$(sed -e "s/#.*//g" -e "s/\s*//g" -e "/^$/d" $file); local key=; local value=;
+	while read -r line;
+	do
+		key=$(awk -F= '{print $1}' <<< $line ); value="$( sed -e 's,^.*=,,g' -e 's,",,g' <<< $line  )"; sed -i -e "s|\$$key|$value|g" "$file";
+	done <<< $data
+}
+
+# remove comments and empty lines from src and write result to dst file
+function clean(){ local src="$1"; local dst="$2"; sed -e "s/\s*#.*//g" -e "s/\s*//g" -e '/^$/d' "$src" >> "$dst"; printf "\n" >> "$dst"; }
 
 function show_err(){ printf '\e[1;31m%-6s\e[m\n' "$(date '+%Y-%m-%dT%H:%M:%S%:z') - ERROR: $1"; exit 1; }
 
