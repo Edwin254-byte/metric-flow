@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev": "ts-node-dev --transpile-only --no-notify src/index.ts",
-    "build": "npx tsc && npx rimraf dist/public && cd ui && npm i && npm run build && mv ./build ../dist/public"
+    "bld-api": "npx tsc",
+    "bld-ui": "npx rimraf dist/public && cd ui && yarn install --network-timeout 100000 && yarn build && mv ./build ../dist/public && cd ../",
+    "build": "yarn bld-api && yarn bld-ui"
   },
   "keywords": [],
   "author": "",
