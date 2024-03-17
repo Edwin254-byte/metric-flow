@@ -1,5 +1,5 @@
 
-source "./env.sh"; source "./utils.sh"
+source "./env.sh"; source "./func.sh"
 
 function build_srv(){
     name="$1"
