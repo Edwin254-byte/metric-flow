@@ -5,3 +5,7 @@
   height: 1px;
   background: #eee;
 }
+
+#close-btn {
+  margin-left: 10px;
+}
