@@ -50,3 +50,8 @@ export interface PerfLoadData {
   cpuLoad: number;
   macA: string;
 }
+
+export interface User {
+  email: string;
+  password: string;
+}
