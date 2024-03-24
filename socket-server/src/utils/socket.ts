@@ -10,15 +10,17 @@ export function mainSocket(io: IO, pid: number) {
     if (auth.token === "239rfaiskdfvq243EGa4q3wefsdad") {
       //valid nodeClient
       socket.join("nodeClient"); //this client is a nodeClient, put in appropriate room
+      console.log(`-----A node client has connected on worker: ${process.pid}`);
     } else if (auth.token === "23jrtiheriufyqwidsf") {
       //valid reactClient
       socket.join("reactClient"); //this client is a reactClient, put in appropriate room
+      console.log(`-----A react socket client has connected on worker: ${process.pid}`);
     } else {
       //you do not belong here. Go away!
       socket.disconnect();
       console.log("YOU HAVE BEEN DISCONNECTED!!!");
     }
-    console.log(`Someone connected on worker ${process.pid}`);
+
     socket.emit("welcome", "Welcome to our cluster driven socket.io server!");
 
     socket.on("perfLoad", data => {
