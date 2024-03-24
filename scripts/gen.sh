@@ -82,4 +82,3 @@ cat $source_file > $tmp_env_file;perform_replace $tmp_env_file; rm -f $env_file;
 
 show_msg "Contents of $source_file copied to $env_file successfully."
 }
-

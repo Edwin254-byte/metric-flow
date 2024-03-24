@@ -2,7 +2,7 @@
 source "./env.sh"; source "./func.sh"
 
 function build_srv(){
-    name="$1"
+    local name="$1"
     show_msg "Creating $name container...."
 
     # just execute the docker file for the respective service
@@ -12,8 +12,8 @@ function build_srv(){
 }
 
 function tag_pod(){
-    name="$1"
-    tag="edu254byte/learn:$2"
+   local name="$1"
+   local tag="edu254byte/learn:$2"
     show_msg "tagging $name pod to $tag"
 
     podman tag $name $tag
@@ -23,7 +23,8 @@ function tag_pod(){
 
 function start_pod(){
     local name="$1"
-    show_msg "starting $name pod..."
+    local tag="docker.io/edu254byte/learn:$2"
+    show_msg "starting $tag ..."
 
     local name="$1"
 
@@ -35,7 +36,7 @@ function start_pod(){
     printf "port to be used: $NODE_CLIENT_PORT \n"
     show_msg "starting $name pod and forwaring port: $port"
 
-    podman rm -f $name; podman run -d -p $port:$port  --name $name $name; update_firewall $port
+    podman rm -f $name; podman run -d -p $port:$port  --name $name "$tag"; update_firewall $port
 }
 
 
