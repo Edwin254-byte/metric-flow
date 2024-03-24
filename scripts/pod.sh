@@ -3,7 +3,7 @@ source "./env.sh"; source "./func.sh"
 
 function build_srv(){
     name="$1"
-    echo "Creating $name container...."
+    show_msg "Creating $name container...."
 
     # just execute the docker file for the respective service
     podman build -t $name "../$name"
@@ -11,9 +11,19 @@ function build_srv(){
     #add more steps to tag and finally push
 }
 
+function tag_pod(){
+    name="$1"
+    tag="edu254byte/learn:$2"
+    show_msg "tagging $name pod to $tag"
+
+    podman tag $name $tag
+    show_msg "Pushing the tagged container to docker hub"
+    podman push $tag
+}
+
 function start_pod(){
     local name="$1"
-    echo "starting $name pod..."
+    show_msg "starting $name pod..."
 
     local name="$1"
 

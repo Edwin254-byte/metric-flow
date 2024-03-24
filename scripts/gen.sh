@@ -5,7 +5,7 @@ source "./func.sh"
 function cmd_usage(){
     show_warn "Allowed options for: $(basename "$0")" >&2
     echo "-s service: nc(node-client),sc(socket-client),ss(socket-server)" >&2
-    echo "-a action: b(build), g(generate), s(start)" >&2
+    echo "-a action: b(build), g(generate), s(start), t(tag)" >&2
 }
 
 # ----------------------Function to parse named arguments
@@ -26,8 +26,12 @@ while getopts ":s:a:" opt; do
     [ "x$OPTARG" == "xg" ] && action="g"
     [ "x$OPTARG" == "xb" ] && action="b"
     [ "x$OPTARG" == "xr" ] && action="r"
+    [ "x$OPTARG" == "xt" ] && action="t"
     [ "x$action" == "x" ] &&  cmd_usage && show_err "Invalid value for -a option: $OPTARG"
 
+      ;;
+    t)
+    [ "x$OPTARG" != "x" ] && tag="$OPTARG"
       ;;
     \?)
        cmd_usage; show_err "Invalid option: -$OPTARG"; ;;
