@@ -20,7 +20,7 @@ console.log("----------waiting to connect to: ", process.env.SOCKET_SERVER_URL);
 
 socket.on("connect", () => {
   //use the mac as a unique identifier for machines
-  const macA = getMac(nI) + Math.floor(Math.random() * 100000); //mac address
+  const macA = getMac(nI); //mac address
   console.log("MacA: ", macA);
 
   const perfDataInterval = setInterval(async () => {
