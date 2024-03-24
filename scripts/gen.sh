@@ -14,7 +14,7 @@ function parse_args() {
 show_msg "Parsing args..."
 
 # Parse named arguments
-while getopts ":s:a:" opt; do
+while getopts ":s:a:t:" opt; do
   case $opt in
     s)
     [ "x$OPTARG" == "xss" ] && service="socket-server"

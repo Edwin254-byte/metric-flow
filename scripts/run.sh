@@ -13,4 +13,4 @@ source "./gen.sh"; source "./pod.sh";
 [ "x$action" == "xg" ] && copy_env $service
 [ "x$action" == "xb" ] && copy_env $service && build_srv $service
 [ "x$action" == "xr" ] && start_pod $service
-[ "x$action" == "xr" ] && tag_pod $service $tag
+[ "x$action" == "xt" ] && tag_pod $service $tag
