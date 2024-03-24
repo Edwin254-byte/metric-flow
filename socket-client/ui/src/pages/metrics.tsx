@@ -1,27 +1,36 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Widget } from "../components";
+import { AuthContext } from "../store";
 import { PerfLoadData, socket } from "../utils";
 
 interface UIPerfLoad {
   [macA: string]: PerfLoadData;
 }
+
 export function MetricsPage() {
   const [perfLoadData, setPerfLoadData] = useState<UIPerfLoad>({});
+  const authCtx = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  if (!authCtx.isLoggedIn) navigate("/");
+
+  // const socket = useMemo(() => SocketConn.getInstance().socket, []);
 
   useEffect(() => {
-    // Listen for perfData
-    socket.on("perfLoad", data => {
-      // Update the state with the new data
-      setPerfLoadData(prevData => ({
-        ...prevData,
-        [data.macA]: data,
-      }));
-    });
-
+    if (socket)
+      // Listen for perfData
+      socket.on("perfLoad", data => {
+        // Update the state with the new data
+        setPerfLoadData(prevData => ({
+          ...prevData,
+          [data.macA]: data,
+        }));
+      });
     return () => {
       // Clean up the socket listener
-      socket.off("perfLoad");
+      socket && socket.off("perfLoad");
     };
   }, []); // Run this once the component has rendered
 

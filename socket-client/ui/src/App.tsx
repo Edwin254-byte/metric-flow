@@ -1,13 +1,14 @@
 import { RouteObject, RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { DemoPage, ErrorPage, MetricsPage, SigninPage } from "./pages";
+import { AuthContextProvider } from "./store";
 
 const routes: RouteObject[] = [
   {
     path: "/",
     errorElement: <ErrorPage />,
     children: [
-      { element: <SigninPage />, index: true },
+      { index: true, element: <SigninPage /> },
       { path: "/demo", element: <DemoPage /> },
       { path: "/metrics", element: <MetricsPage /> },
     ],
@@ -16,7 +17,11 @@ const routes: RouteObject[] = [
 
 function App() {
   const router = createBrowserRouter(routes);
-  return <RouterProvider router={router} />;
+  return (
+    <AuthContextProvider>
+      <RouterProvider router={router} />
+    </AuthContextProvider>
+  );
 }
 
 export default App;

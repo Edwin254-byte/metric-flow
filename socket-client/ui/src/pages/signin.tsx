@@ -1,36 +1,37 @@
 import { jwtDecode } from "jwt-decode";
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
 import LoadingOverlay from "react-loading-overlay-ts";
 import { useNavigate } from "react-router-dom";
-import "./signin.css";
 
-const SOCKET_SERVER_URL = "http://localhost:3300";
-const TKN_KEY = "tkn";
+import { SOCKET_SERVER_URL, TKN_KEY } from "../constants";
+import { AuthContext } from "../store";
+import "./signin.css";
 
 export function SigninPage() {
   const [token, setToken] = useState(localStorage.getItem(TKN_KEY));
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const authCtx = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   useEffect(() => {
     //navigate to /metrics if there is a token
-    if (token) {
-      console.log("token found");
-      //Decode the token and ensure it is not expired.
+    if (token && !authCtx.isLoggedIn) {
       const payload = jwtDecode(token);
 
       if (payload.exp) {
         const timeDiff = payload.exp * 1000 - Date.now();
         const tknExpInMs = 1 * 60 * 60 * 1000;
-        //Navigate to metrics only if the token is valid
-        if (timeDiff > 1000 && timeDiff < tknExpInMs) navigate("/metrics");
+        //Set the user to be logged in, if the token is not yet expired
+        if (timeDiff > 1000 && timeDiff < tknExpInMs) authCtx.setToken(token);
+        else setError("Sorry, your session has expired please signin again.");
       }
     }
-  }, [token, navigate]);
+    if (authCtx.isLoggedIn) navigate("/metrics");
+  }, [token, authCtx, navigate]);
 
   const emailHandler = (event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value);
   const passwordHandler = (event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value);
