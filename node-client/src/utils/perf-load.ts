@@ -4,6 +4,8 @@ import { PerfLoadData } from "./types";
 
 export async function perfLoadData(): Promise<PerfLoadData> {
   // What do we need to know FROM NODE about performance?
+  //- host name
+  const hostname = os.hostname();
   // - CPU load (current)
   const cpus = os.cpus(); //all cpus as an array
   // - Memory Usage
@@ -43,5 +45,6 @@ export async function perfLoadData(): Promise<PerfLoadData> {
     cpuSpeed,
     cpuLoad,
     macA: "", //The actual value will be socket when socket connects
+    hostname,
   };
 }

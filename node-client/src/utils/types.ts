@@ -45,4 +45,5 @@ export interface PerfLoadData {
   cpuSpeed: number;
   cpuLoad: number;
   macA: string;
+  hostname: string;
 }
