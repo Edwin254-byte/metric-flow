@@ -102,7 +102,7 @@ Welcome to Metric Flow! This guide will walk you through the entire process of s
 4. **Configure SSH Access**:
    - Use `ssh-copy-id` to set up SSH access: `ssh-copy-id -P 4022 <your-username>@localhost`.
 5. **Install Guest Additions**:
-   - Follow instructions from [this guide](https://github.com/Edwin254-byte/metric-flow/install-virtualbox-guest-additions.txt) to install Guest Additions.
+   - Follow instructions from [this guide](https://github.com/Edwin254-byte/metric-flow/blob/master/install-virtualbox-guest-additions.txt) to install Guest Additions.
 6. **Update and Configure VM**:
    - Log in using Cygwin and run:
      ```bash
@@ -142,7 +142,7 @@ Welcome to Metric Flow! This guide will walk you through the entire process of s
 1. **Install Vagrant**: Download Vagrant if not already installed.
 2. **Replace Vagrantfile**:
    - Navigate to your Vagrant installation directory.
-   - Replace the Vagrantfile with the one from [Metric Flow Vagrantfile](https://github.com/Edwin254-byte/metric-flow/vagrantfile).
+   - Replace the Vagrantfile with the one from [Metric Flow Vagrantfile](https://github.com/Edwin254-byte/metric-flow/blob/master/Vagrantfile).
    - Modify RAM and CPU allocation based on your machine’s resources.
 3. **Create VMs**:
    - Run the command to bring up VMs:
