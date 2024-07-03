@@ -36,7 +36,8 @@ function start_pod(){
     printf "port to be used: $NODE_CLIENT_PORT \n"
     show_msg "starting $name pod and forwaring port: $port"
 
-    podman rm -f $name; podman run -d -p $port:$port  --name $name "$tag"; update_firewall $port
+    hostname=$(hostname)
+    podman rm -f $name; podman run -d -p $port:$port  --name $name --hostname $hostname "$tag"; update_firewall $port
 }
 
 
