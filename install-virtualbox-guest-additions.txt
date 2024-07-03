@@ -1,0 +1,23 @@
+#!/bin/sh
+
+version=7.0.12
+
+
+dnf update -y; # dnf install -y epel-release; /usr/bin/crb enable;
+
+dnf install -y kernel kernel-devel kernel-headers gcc make perl elfutils-libelf-devel tar bzip2 wget libX11; excd=$? ; [ "x$excd" == "x0" ] || exit excd
+
+#If you don't reboot, the system will report missing kernel-headers
+reboot
+
+wget http://download.virtualbox.org/virtualbox/$version/VBoxGuestAdditions_$version.iso
+
+rm -rf /media/guest
+mkdir /media/guest
+mount -o loop,ro  VBoxGuestAdditions_$version.iso /media/guest
+sh /media/guest/VBoxLinuxAdditions.run
+rm VBoxGuestAdditions_$version.iso
+umount /media/guest
+rmdir /media/guest
+rm -rf install-virtualbox-guest-additions
+

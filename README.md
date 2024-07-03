@@ -102,7 +102,7 @@ Welcome to Metric Flow! This guide will walk you through the entire process of s
 4. **Configure SSH Access**:
    - Use `ssh-copy-id` to set up SSH access: `ssh-copy-id -P 4022 <your-username>@localhost`.
 5. **Install Guest Additions**:
-   - Follow instructions from [this guide](https://github.com/Edwin254-byte/metric-flow/install-virtualbox-guest-additions) to install Guest Additions.
+   - Follow instructions from [this guide](https://github.com/Edwin254-byte/metric-flow/install-virtualbox-guest-additions.txt) to install Guest Additions.
 6. **Update and Configure VM**:
    - Log in using Cygwin and run:
      ```bash
