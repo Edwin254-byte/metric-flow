@@ -58,6 +58,9 @@ To get started with the Metric Flow project, follow the steps below:
    git clone https://github.com/edwin254-byte/metric-flow.git
    cd metric-flow
    ```
+   
+2. **Update the config per your specification:**
+   - Update the scripts/env.sh file and provide your variables.
 
 2. **Setup Virtual Machines:**
    - Install and configure Vagrant.
