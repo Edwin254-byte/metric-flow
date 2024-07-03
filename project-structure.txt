@@ -1,0 +1,107 @@
+metric-flow/
+├── install-virtualbox-guest-additions.txt
+├── node-client
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── src
+│   │   ├── index.ts
+│   │   └── utils
+│   │       ├── cpu-load.ts
+│   │       ├── get-mac.ts
+│   │       ├── index.ts
+│   │       ├── perf-load.ts
+│   │       └── types.ts
+│   └── tsconfig.json
+├── README.md
+├── scripts
+│   ├── env.sh
+│   ├── func.sh
+│   ├── gen.sh
+│   ├── pod.sh
+│   ├── run.sh
+│   └── stress.sh
+├── socket-client
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── src
+│   │   ├── index.ts
+│   │   └── routes
+│   │       └── index.ts
+│   ├── tsconfig.json
+│   └── ui
+│       ├── package.json
+│       ├── public
+│       │   ├── favicon.ico
+│       │   ├── index.html
+│       │   ├── logo192.png
+│       │   ├── logo512.png
+│       │   ├── manifest.json
+│       │   └── robots.txt
+│       ├── README.md
+│       ├── src
+│       │   ├── App.tsx
+│       │   ├── components
+│       │   │   ├── cpu.tsx
+│       │   │   ├── index.ts
+│       │   │   ├── info.tsx
+│       │   │   ├── mem.tsx
+│       │   │   ├── widget.css
+│       │   │   └── widget.tsx
+│       │   ├── constants
+│       │   │   └── index.ts
+│       │   ├── index.css
+│       │   ├── index.tsx
+│       │   ├── logo.svg
+│       │   ├── pages
+│       │   │   ├── demo.tsx
+│       │   │   ├── error.tsx
+│       │   │   ├── index.ts
+│       │   │   ├── metrics.tsx
+│       │   │   ├── signin.css
+│       │   │   └── signin.tsx
+│       │   ├── react-app-env.d.ts
+│       │   ├── reportWebVitals.ts
+│       │   ├── setupTests.ts
+│       │   ├── store
+│       │   │   ├── context.tsx
+│       │   │   └── index.ts
+│       │   └── utils
+│       │       ├── canvas-load-animation.ts
+│       │       ├── index.ts
+│       │       ├── socket-conn.ts
+│       │       └── type.ts
+│       ├── tsconfig.json
+│       └── yarn.lock
+├── socket-server
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── src
+│   │   ├── constants
+│   │   │   └── index.ts
+│   │   ├── http
+│   │   │   ├── controllers
+│   │   │   │   └── index.ts
+│   │   │   ├── handlers.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── signin.ts
+│   │   │   ├── index.ts
+│   │   │   ├── middleware
+│   │   │   │   └── index.ts
+│   │   │   └── routes
+│   │   │       └── index.ts
+│   │   ├── index.ts
+│   │   ├── models
+│   │   │   └── index.ts
+│   │   ├── seed
+│   │   │   ├── index.ts
+│   │   │   └── seed-handlers.ts
+│   │   └── utils
+│   │       ├── cluster-setup.ts
+│   │       ├── connect-mongo.ts
+│   │       ├── index.ts
+│   │       ├── socket.ts
+│   │       └── types.ts
+│   └── tsconfig.json
+└── Vagrantfile
+
+26 directories, 78 files
