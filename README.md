@@ -75,7 +75,7 @@ Metric Flow consists of three main services:
 
 ## **Getting Started**
 
-Welcome to Metric Flow! This guide will walk you through the entire process of setting up and running the Metric Flow system using Vagrant, VirtualBox, and Rocky Linux.
+This guide will walk you through the entire process of setting up and running the Metric Flow system using Vagrant, VirtualBox, and Rocky Linux.
 
 ### Part 1: Setting Up the Rocky Linux Base OS in VirtualBox
 
